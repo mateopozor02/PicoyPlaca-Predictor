@@ -34,8 +34,8 @@ class PicoYPlaca:
 
         # Define the restriction hours
         self.restriction_hours = [
-            (datetime.strptime('06:00', '%H:%M').time(), datetime.strptime('09:00', '%H:%M').time()),
-            (datetime.strptime('16:00', '%H:%M').time(), datetime.strptime('20:00', '%H:%M').time())
+            (datetime.strptime('07:00', '%H:%M').time(), datetime.strptime('09:30', '%H:%M').time()),
+            (datetime.strptime('16:00', '%H:%M').time(), datetime.strptime('19:30', '%H:%M').time())
         ]
 
     def is_restricted(self, car:Car, date:str, time:str):
@@ -70,7 +70,7 @@ class PicoYPlaca:
 
 if __name__ == '__main__':
     # Create a Car object
-    car = Car('PBA-1233')
+    car = Car('PBA-1237')
 
     print(car.get_last_digit())
 
@@ -78,8 +78,8 @@ if __name__ == '__main__':
     pico_y_placa = PicoYPlaca()
 
     # Check if the car is restricted to circulate in a given date and time
-    date = '2024-09-16'
-    time = '08:00'
+    date = '2024-09-19'
+    time = '17:00'
     if pico_y_placa.is_restricted(car, date, time):
         print(f'{car} is restricted to circulate on {date} at {time}')
     else:
