@@ -4,6 +4,12 @@ The repository cantains a Python application that predicts if a car is allowed t
 according to the city's "Pico y Placa" reglulations. These restrictions apply from Monday to Friday from 
 7:00am - 9:30am in the morning, and 4:00pm - 7:30 pm in the evening. 
 
+## Testing
+To test the application, the `unittest` framework is used. You can run the test with the following command: 
+```
+python -m unittest -v test_pico_y_placa.py
+```
+
 ## Module: pico_y_placa 
 This module contains the main logic behind the application. It includes two classes: Car class and PicoYPlaca class
 used to represent and handle the restrictions. 
