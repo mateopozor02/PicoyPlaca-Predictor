@@ -16,3 +16,6 @@ class Car:
     
     def get_last_digit(self):
         return self._license_plate[-1]
+    
+    def __str__(self):
+        return f'Car with license plate {self._license_plate}'
