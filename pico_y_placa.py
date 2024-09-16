@@ -3,7 +3,7 @@ from datetime import datetime
 
 class Car:
     def __init__(self, license_plate):
-        self._license_plate = self.set_license_plate(license_plate)
+        self.set_license_plate(license_plate)
 
     def set_license_plate(self, license_plate):
         # Validate license plate format to be like 'PBX-1234'
@@ -34,8 +34,8 @@ class PicoYPlaca:
 
         # Define the restriction hours
         self.restriction_hours = [
-            (datetime.strptime('06:00', '%H:%M'), datetime.strptime('09:00', '%H:%M')),
-            (datetime.strptime('16:00', '%H:%M'), datetime.strptime('20:00', '%H:%M'))
+            (datetime.strptime('06:00', '%H:%M').time(), datetime.strptime('09:00', '%H:%M').time()),
+            (datetime.strptime('16:00', '%H:%M').time(), datetime.strptime('20:00', '%H:%M').time())
         ]
 
     def is_restricted(self, car:Car, date:str, time:str):
@@ -70,13 +70,15 @@ class PicoYPlaca:
 
 if __name__ == '__main__':
     # Create a Car object
-    car = Car('PBA-1234')
+    car = Car('PBA-1233')
+
+    print(car.get_last_digit())
 
     # Create a PicoYPlaca object
     pico_y_placa = PicoYPlaca()
 
     # Check if the car is restricted to circulate in a given date and time
-    date = '2021-08-23'
+    date = '2024-09-16'
     time = '08:00'
     if pico_y_placa.is_restricted(car, date, time):
         print(f'{car} is restricted to circulate on {date} at {time}')
