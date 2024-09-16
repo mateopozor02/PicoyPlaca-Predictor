@@ -33,3 +33,13 @@ class TestPicoYPlaca(unittest.TestCase):
         date = '2024-09-16' # Monday
         time = '10:00' # Time is not within the restriction hours
         self.assertFalse(self.pico_y_placa.is_restricted(car, date, time))
+
+    # Test case for boundary times
+    def test_boundary_times(self):
+        car = Car('PBA-1231') # Car is not restricted on Monday
+        date = '2024-09-16' # Monday
+        time = '09:30' # Time is the last minute of the restriction hours
+        self.assertTrue(self.pico_y_placa.is_restricted(car, date, time))
+
+        time = '16:00' # Time is the first minute of the restriction hours
+        self.assertTrue(self.pico_y_placa.is_restricted(car, date, time))
