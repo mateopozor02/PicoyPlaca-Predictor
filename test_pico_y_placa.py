@@ -43,3 +43,6 @@ class TestPicoYPlaca(unittest.TestCase):
 
         time = '16:00' # Time is the first minute of the restriction hours
         self.assertTrue(self.pico_y_placa.is_restricted(car, date, time))
+
+if __name__ == '__main__':
+    unittest.main()
