@@ -66,21 +66,3 @@ class PicoYPlaca:
                         return True
         
         return False
-    
-
-if __name__ == '__main__':
-    # Create a Car object
-    car = Car('PBA-1237')
-
-    print(car.get_last_digit())
-
-    # Create a PicoYPlaca object
-    pico_y_placa = PicoYPlaca()
-
-    # Check if the car is restricted to circulate in a given date and time
-    date = '2024-09-19'
-    time = '17:00'
-    if pico_y_placa.is_restricted(car, date, time):
-        print(f'{car} is restricted to circulate on {date} at {time}')
-    else:
-        print(f'{car} is not restricted to circulate on {date} at {time}')
