@@ -28,3 +28,14 @@ This class is used to handle the "Pico y Placa" restrictions and the main logic 
 - `__init__()`: Initializes the instance variables needed to determine the restrictions.
 - `is_restricted(car: Car, date: str, time: str) -> bool`: Checks if the given car is restricted based on its license plate, given date (YYYY-MM-DD), and time (HH:MM).
    Returns True if the car is restricted and False otherwise.
+
+## Module: test_pico_y_placa
+This module contains unit tests for the `PicoYPlaca` class, which checks if a vehicle is restricted based on its license plate, date, and time. 
+The tests are written using the `unittest` framework and ensure the correct functionality of the PicoYPlaca predictor.
+
+### Tests Included
+- **Restricted vehicle**: Verifies that a vehicle with a restricted license plate is correctly identified as restricted during restricted hours on a restricted day.
+- **Unrestricted vehicle**: Checks that a vehicle with a non-restricted license plate is allowed to circulate during restricted hours on a restricted day.
+- **Not restricted day**:  Ensures that no vehicle is restricted on a non-restricted day (e.g., Sunday).
+- **Not restricted time**:  Verifies that a vehicle is not restricted outside the defined restriction hours.
+- **Boundary times**:  Tests the edge cases where the vehicle is checked at the exact start or end of the restriction hours.
