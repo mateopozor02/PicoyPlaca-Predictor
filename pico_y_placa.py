@@ -1,5 +1,5 @@
 import re
-import datetime
+from datetime import datetime
 
 class Car:
     def __init__(self, license_plate):
@@ -66,3 +66,19 @@ class PicoYPlaca:
                         return True
         
         return False
+    
+
+if __name__ == '__main__':
+    # Create a Car object
+    car = Car('PBA-1234')
+
+    # Create a PicoYPlaca object
+    pico_y_placa = PicoYPlaca()
+
+    # Check if the car is restricted to circulate in a given date and time
+    date = '2021-08-23'
+    time = '08:00'
+    if pico_y_placa.is_restricted(car, date, time):
+        print(f'{car} is restricted to circulate on {date} at {time}')
+    else:
+        print(f'{car} is not restricted to circulate on {date} at {time}')
