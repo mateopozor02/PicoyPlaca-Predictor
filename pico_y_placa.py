@@ -37,3 +37,32 @@ class PicoYPlaca:
             (datetime.strptime('06:00', '%H:%M'), datetime.strptime('09:00', '%H:%M')),
             (datetime.strptime('16:00', '%H:%M'), datetime.strptime('20:00', '%H:%M'))
         ]
+
+    def is_restricted(self, car:Car, date:str, time:str):
+        """
+        Check if a car with a given license plate is restricted to circulate in a given date and time.
+
+        Args:
+        car (Car): Car object
+        date (str): Date in format 'YYYY-MM-DD'
+        time (str): Time in format 'HH:MM'
+
+        Returns:
+        bool: True if the car is restricted, False otherwise
+        """
+        # Get the last digit of the license plate
+        last_digit = int(car.get_last_digit())
+
+        # Initialize datetime objects for the given date and time
+        date_obj = datetime.strptime(date, '%Y-%m-%d').date()
+        time_obj = datetime.strptime(time, '%H:%M').time()
+
+        # Check if the day is restricted
+        if date_obj.weekday() in self.restriction_schedule:
+            if last_digit in self.restriction_schedule[date_obj.weekday()]:
+                # Check if the time is restricted
+                for start, end in self.restriction_hours:
+                    if start <= time_obj <= end:
+                        return True
+        
+        return False
